@@ -12,7 +12,7 @@ function createNavBar() {
     let header = create({type:'header'});
     
     let nav = create({type:'nav'});
-    let logo = create({type:'h1', css:['logo'], text:'Nicco'});
+    let logo = create({type:'div', css:['logo'], text:"Nicco"});
     let navToggle = create({type:'input', attr:{type:'checkbox', id:'nav-toggle'}, css:['nav-toggle']});
     let navToggleLabel = create({type:'label',attr:{for:'nav-toggle'}, css:['nav-toggle-label']});
     let list = create({type:'ul'});
@@ -27,6 +27,9 @@ function createNavBar() {
     let menuSymbol = createImage (menu,'nav-symbol');
     let addSymbol = createImage (add,'nav-symbol');
 
+    let homeToolTip = create({type:'div', css:['tooltip'], text:'Home'});
+    let addToolTip = create({type:'div', css:['tooltip'], text:'Create To Do'});
+
     document.body.append(header);
         header.append(logo,navToggle,navToggleLabel,nav);
             navToggleLabel.append(menuSymbol);
@@ -34,8 +37,8 @@ function createNavBar() {
                 list.append(li1,li2);
                     li1.append(link1);
                     li2.append(link2);
-                        link1.append(homeSymbol);
-                        link2.append(addSymbol);
+                        link1.append(homeSymbol,homeToolTip);
+                        link2.append(addSymbol,addToolTip);
 }
 
 export { loadHomePage };
