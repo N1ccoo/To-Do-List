@@ -7,13 +7,13 @@ import listImage from './assets/list.png';
 
 
 const loadHomePage = () => {
-    createNavBar()
-    createContent('Today')
-}
+    createNavBar();
+    createContent();
+    
+};
 
 function createNavBar() {
     let header = create({type:'header'});
-
     let nav = create({type:'nav'});
     let logo = create({type:'div', css:['logo'], text:"Nicco"});
     let navToggle = create({type:'input', attr:{type:'checkbox', id:'nav-toggle'}, css:['nav-toggle']});
@@ -74,11 +74,6 @@ function createContent(project, todo) {
                 todo1.append(button,todoTextContainer)
                     todoTextContainer.append(todoTitle,todoText);
 }
-
-
-
-
-
 
 
 

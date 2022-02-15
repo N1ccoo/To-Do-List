@@ -151,23 +151,24 @@ nav a {
 
 .todo-list-item {
     border-bottom: rgb(240, 237, 237) 1px solid;
-    overflow-wrap: break-word;
-    word-break: break-word;
     padding: 1rem;
-    border-radius: 2px;
     display: flex;
     gap: 1rem;
-    width: inherit;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .todo-list {
     list-style: none;
+    width: 100%;
 }
 
 .todo-title {
     font-weight: 400;
     font-size: 1rem;
     color: black;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .todo-text {
@@ -176,12 +177,16 @@ nav a {
     color: rgb(48, 47, 47);
     line-height: 1.4;
     word-spacing: 1px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    
 }
 
 .todo-text-container {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+   
 }
 
 .todo-button {
@@ -190,9 +195,7 @@ nav a {
     border-radius: 50%;
     border: rgb(105, 104, 104) 1px solid;
     background-color: white;
-    color:red;
-    font-size: 0.5rem;
-    
+    font-size: 0.5rem; 
 }
 
 .todo-button:hover {
