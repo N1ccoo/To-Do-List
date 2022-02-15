@@ -37,32 +37,33 @@ body {
 
 .tooltip {
     position: absolute;
-    top: 0;
-    left: 45px;
+    top: 2px;
+    left: 35px;
     opacity: 0;
-    background-color: whitesmoke;
     padding: 0.5rem;
-    border-radius: 3px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     white-space: nowrap;
     color: rgb(71, 71, 71);
     text-transform: none;
+    cursor: default;
 }
+
+/* navbar */
 
 .logo {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-   
     letter-spacing: -2px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-size: 2.2rem;
     cursor: pointer;
     white-space: nowrap;
 }
 
 header {
-    background: rgb(4,168,94);
-    background: linear-gradient(90deg, rgb(93, 248, 178) 32%, rgb(134, 245, 151) 72%);
+    background: #797bf3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #d6e8fac2, #4294ff81);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0084ff, #b6d5fd); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     text-align: center;
     position: fixed;
     z-index: 999;
@@ -96,7 +97,7 @@ nav {
     transition: transform 0.4s ease-in-out;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px rgb(116, 113, 113) solid;
+    border-bottom: 1px rgb(165, 163, 163) solid;
 }
 
 nav ul {
@@ -130,14 +131,83 @@ nav a {
     transition: opacity 0.25s ease-in-out 0.25s;
 }
 
-@media screen and (min-width: 800px) {
+/* content */
+
+.project-container {
+    display: flex;
+    outline: red 1px solid;
+    width: 100%;
+    padding: 5rem 3rem;
+    align-items: center;
+    flex-direction: column;
+}
+
+.project-header {
+    display: flex;
+    outline: red 1px dotted;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.todo-list-item {
+    border-bottom: rgb(240, 237, 237) 1px solid;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    padding: 1rem;
+    border-radius: 2px;
+    display: flex;
+    gap: 1rem;
+    width: inherit;
+}
+
+.todo-list {
+    list-style: none;
+}
+
+.todo-title {
+    font-weight: 400;
+    font-size: 1rem;
+    color: black;
+}
+
+.todo-text {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgb(48, 47, 47);
+    line-height: 1.4;
+    word-spacing: 1px;
+}
+
+.todo-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.todo-button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: rgb(105, 104, 104) 1px solid;
+    background-color: white;
+    color:red;
+    font-size: 0.5rem;
+    
+}
+
+.todo-button:hover {
+    background-color: rgb(197, 194, 194);
+    transition: background-color 0.3s ease-in-out;
+}
+
+@media screen and (min-width: 900px) {
     .nav-toggle-label {
         display:none;
     }
 
     header {
         display: grid;
-        grid-template-columns: 1fr auto minmax(600px, 1fr) 1fr;
+        grid-template-columns: 1fr auto minmax(600px, 2fr) 1fr;
     }
 
     .logo {
@@ -167,7 +237,38 @@ nav a {
     }
 
     .tooltip {
+        all: unset;
+        position: absolute;
         top: 45px;
         left: 0;
+        background-color: whitesmoke;
+        padding: 0.5rem;
+        border-radius: 3px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        color: rgb(71, 71, 71);
+        text-transform: none;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        opacity: 0;
+        cursor: default;
+    }
+
+    .container {
+        display: flex;
+        width: 100%;
+        padding-top: 6rem;
+        padding-bottom: 5rem;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    
+    .project-header {
+        max-width: 800px;
+    }
+
+    .todo-list-item {
+        width: 800px;
     }
 }
+
