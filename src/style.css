@@ -1,347 +1,366 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
 
 :root {
-    --blue: rgb(66, 174, 247);
+	--blue: rgb(66, 174, 247);
+	--lightGreyText: #d4d0ca;
+	--greyText: rgb(146, 145, 145);
+	--borderGrey: #2e3335;
+	--darkContent: #181a1b;
+	--darkNav: #1b1d1e;
+	--tooltip: #333638;
+	--tooltip-light: #878a8d;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	font-size: 16px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	background-color: #181a1b;
 }
 
 .nav-symbol {
-    height: 36px;
-    width: 36px;
-    border-radius: 3px;
-    padding: 6px;
+	height: 36px;
+	width: 36px;
+	border-radius: 3px;
+	padding: 6px;
 }
 
 .nav-symbol:hover {
-    background-color: rgba(0, 0, 0, 0.11);
+	background-color: rgba(0, 0, 0, 0.11);
 }
 
-.nav-symbol:hover ~ .tooltip {
-    opacity: 1;
-    transition: opacity 0s 0.2s;
+.nav-symbol:hover~.tooltip {
+	opacity: 1;
+	transition: opacity 0s 0.2s;
 }
 
 .tooltip {
-    position: absolute;
-    top: 2px;
-    left: 35px;
-    opacity: 0;
-    padding: 0.5rem;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    color: rgb(71, 71, 71);
-    text-transform: none;
-    cursor: default;
+	position: absolute;
+	top: 2px;
+	left: 35px;
+	opacity: 0;
+	padding: 0.5rem;
+	font-size: 0.9rem;
+	white-space: nowrap;
+	color: var(--tooltip-light);
+	text-transform: none;
+	cursor: default;
 }
+
 
 /* navbar */
 
 .logo {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    letter-spacing: -2px;
-    color: rgb(255, 255, 255);
-    font-size: 2.2rem;
-    cursor: pointer;
-    white-space: nowrap;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	letter-spacing: -2px;
+	color: rgb(255, 255, 255);
+	font-size: 2.2rem;
+	cursor: pointer;
+	white-space: nowrap;
 }
 
 header {
-    background: #797bf3;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #d6e8fac2, #4294ff81);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #0084ff, #b6d5fd); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    text-align: center;
-    position: fixed;
-    z-index: 999;
-    width:100%;
+	background: #797bf3;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #d6e8fac2, #4294ff81);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #0084ff, #b6d5fd);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	text-align: center;
+	position: fixed;
+	z-index: 100;
+	width: 100%;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .nav-toggle {
-    display: none;
+	display: none;
 }
 
 .nav-toggle-label {
-    color: white;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-left: 1rem;
-    display: flex;
-    align-items: center;
-    height: 100%;
+	color: white;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-left: 1rem;
+	display: flex;
+	align-items: center;
+	height: 100%;
 }
 
 nav {
-    position: absolute;
-    text-align: left;
-    top: 100%;
-    left: 0;
-    background-color: white;
-    width: 100%;
-    transform: scale(1,0);
-    transform-origin: top;
-    transition: transform 0.4s ease-in-out;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px rgb(165, 163, 163) solid;
-    display: flex;
-    flex-direction: column;
+	position: absolute;
+	text-align: left;
+	top: 100%;
+	left: 0;
+	background-color: var(--darkNav);
+	width: 100%;
+	transform: scale(1, 0);
+	transform-origin: top;
+	transition: transform 0.2s ease-in-out;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px var(--borderGrey) solid;
+	display: flex;
+	flex-direction: column;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 nav ul {
-    list-style: none;
+	list-style: none;
 }
 
 nav li {
-    display: flex;
-    flex-direction: column;
-    margin-left: 1rem;
+	display: flex;
+	flex-direction: column;
+	margin-left: 1rem;
 }
 
 nav a {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    font-size: 1rem;
-    text-transform: uppercase;
-    opacity: 0;
-    transition: opacity 0.15s ease-in-out;
-    position: relative;
-    height: 36px;
-    width: 36px;
+	color: rgb(0, 0, 0);
+	text-decoration: none;
+	font-size: 1rem;
+	text-transform: uppercase;
+	opacity: 0;
+	transition: opacity 0.15s ease-in-out;
+	position: relative;
+	height: 36px;
+	width: 36px;
 }
 
-.nav-toggle:checked ~ nav {
-    transform: scale(1,1);
+.nav-toggle:checked~nav {
+	transform: scale(1, 1);
 }
 
-.nav-toggle:checked ~ nav a {
-    opacity: 1;
-    transition: opacity 0.25s ease-in-out 0.25s;
+.nav-toggle:checked~nav a {
+	opacity: 1;
+	transition: opacity 0.15s ease-in-out 0.25s;
 }
 
-.nav-toggle:checked ~ nav label {
-    opacity: 1;
-    transition: opacity 0.25s ease-in-out 0.25s;
+.nav-toggle:checked~nav label {
+	opacity: 1;
+	transition: opacity 0.15s ease-in-out 0.25s;
 }
 
-#project-list-toggle:checked ~ .project-list-container {
-    transform: scale(1,1);
-    
+/* side nav bar */
+
+#project-list-toggle:checked~.project-list-container {
+	transform: scale(1, 1);
 }
 
-#project-list-toggle:checked ~ .project-list-container li {
-    opacity: 1;
-    transition: opacity 0.25s ease-in-out 0.25s;
+#project-list-toggle:checked~.project-list-container li {
+	opacity: 1;
+	transition: opacity 0.15s ease-in-out 0.25s;
 }
 
 .project-list {
-    position: relative;
-    width: 100vw;
+	position: relative;
+	width: 100vw;
 }
 
 .project-list-container {
-    padding: 0.5rem;
-    width: 100%;
-    left: 0;
-    top:120%;
-    position: absolute;
-    border-top: 1px rgb(165, 163, 163) solid;
-    border-bottom: 1px rgb(165, 163, 163) solid;
-    z-index: 999;
-    background-color: white;
-    transform: scale(1,0);
-    transform-origin: top;
-    transition: transform 0.4s ease-in-out;
+	padding: 0.5rem;
+	width: 100%;
+	left: 0;
+	top: 120%;
+	position: absolute;
+	border-top: 1px var(--borderGrey) solid;
+	border-bottom: 1px var(--borderGrey) solid;
+	z-index: 100;
+	background-color: var(--darkNav);
+	transform: scale(1, 0);
+	transform-origin: top;
+	transition: transform 0.2s ease-in-out;
+	color: var(--greyText);
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .project-list-container li {
-    opacity: 0;
+	opacity: 0;
 }
 
 .project-toggle-label {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin-left: 1rem;
-    position: relative;
-    opacity: 0;
-    transition: opacity 0.15s ease-in-out;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	margin-left: 1rem;
+	position: relative;
+	opacity: 0;
+	transition: opacity 0.15s ease-in-out;
 }
+
 
 /* content */
 
 .project-container {
-    display: flex;
-    outline: red 1px solid;
-    width: 100%;
-    padding: 5rem 3rem;
-    align-items: center;
-    flex-direction: column;
+	display: flex;
+	width: 100%;
+	padding: 5rem 3rem;
+	align-items: center;
+	flex-direction: column;
 }
 
 .project-header {
-    display: flex;
-    outline: red 1px dotted;
-    width: 100%;
-    margin-bottom: 1rem;
+	display: flex;
+	width: 100%;
+	margin-bottom: 1rem;
+	color: var(--lightGreyText);
 }
 
 .todo-list-item {
-    border-bottom: rgb(240, 237, 237) 1px solid;
-    padding: 1rem;
-    display: flex;
-    gap: 1rem;
-    margin-left: auto;
-    margin-right: auto;
+	border-bottom: var(--borderGrey) 1px solid;
+	padding: 1rem;
+	display: flex;
+	gap: 1rem;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .todo-list {
-    list-style: none;
-    width: 100%;
+	list-style: none;
+	width: 100%;
 }
 
 .todo-title {
-    font-weight: 400;
-    font-size: 1rem;
-    color: black;
-    overflow-wrap: break-word;
-    word-break: break-word;
+	font-weight: 400;
+	font-size: 1rem;
+	color: #d4d0ca;
+	overflow-wrap: break-word;
+	word-break: break-word;
 }
 
 .todo-text {
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: rgb(48, 47, 47);
-    line-height: 1.4;
-    word-spacing: 1px;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    
+	font-size: 0.85rem;
+	font-weight: 300;
+	color: rgb(146, 145, 145);
+	line-height: 1.4;
+	word-spacing: 1px;
+	overflow-wrap: break-word;
+	word-break: break-word;
 }
 
 .todo-text-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-   
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .todo-button {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: rgb(105, 104, 104) 1px solid;
-    background-color: white;
-    font-size: 0.5rem; 
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: var(--borderGrey) 1px solid;
+	background-color: var(--darkContent);
+	font-size: 0.5rem;
 }
 
 .todo-button:hover {
-    background-color: rgb(197, 194, 194);
-    transition: background-color 0.3s ease-in-out;
+	background-color: var(--greyText);
+	transition: background-color 0.2s ease-in-out;
 }
 
 @media screen and (min-width: 900px) {
-    .nav-toggle-label {
-        display:none;
-    }
-
-    header {
-        display: grid;
-        grid-template-columns: 1fr auto minmax(600px, 2fr) 1fr;
-    }
-
-    .logo {
-        grid-column: 2 / 3;
-    }
-
-    nav {
-        all: unset;
-        grid-column: 3 / 4;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    
-    }
-
-    nav::after {
-        all: unset;
-        display: none;
-    }
-
-    nav ul {
-        display: flex;
-       
-    }
-
-    nav a {
-        opacity: 1;
-    }
-
-    nav li {
-        margin: 0;
-        padding: 0;
-    }
-
-    .project-toggle-label {
-        opacity: 1;
-    }
-
-    .tooltip {
-        all: unset;
-        position: absolute;
-        top: 45px;
-        left: 0;
-        background-color: whitesmoke;
-        padding: 0.5rem;
-        border-radius: 3px;
-        font-size: 0.8rem;
-        white-space: nowrap;
-        color: rgb(71, 71, 71);
-        text-transform: none;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-        opacity: 0;
-        cursor: default;
-    }
-
-    .container {
-        display: flex;
-        width: 100%;
-        padding-top: 6rem;
-        padding-bottom: 5rem;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    .project-header {
-        max-width: 800px;
-    }
-
-    .todo-list-item {
-        width: 800px;
-    }
-
-    .project-toggle-label {
-        margin: 0;
-        width: 36px;
-    }
-
-    .project-list {
-    
-        width: 36px;
-    }
+	.nav-toggle-label {
+		display: none;
+	}
+	header {
+		display: grid;
+		grid-template-columns: 1fr auto minmax(600px, 2fr) 1fr;
+	}
+	.logo {
+		grid-column: 2 / 3;
+	}
+	nav {
+		all: unset;
+		grid-column: 3 / 4;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+	nav::after {
+		all: unset;
+		display: none;
+	}
+	nav ul {
+		display: flex;
+	}
+	nav a {
+		opacity: 1;
+	}
+	nav li {
+		margin: 0;
+		padding: 0;
+	}
+	.project-toggle-label {
+		opacity: 1;
+	}
+	.tooltip {
+		all: unset;
+		position: absolute;
+		top: 45px;
+		left: 0;
+		background-color: var(--tooltip);
+		padding: 0.5rem;
+		border-radius: 3px;
+		font-size: 0.8rem;
+		white-space: nowrap;
+		color: var(--lightGreyText);
+		text-transform: none;
+		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+		opacity: 0;
+		cursor: default;
+		z-index: 200;
+	}
+	.container {
+		display: flex;
+		width: 100%;
+		padding-top: 6rem;
+		padding-bottom: 5rem;
+		align-items: center;
+		flex-direction: column;
+	}
+	.project-list-container {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		top: 100%;
+		left: calc(100vw - 300px);
+		gap: 1rem;
+		height: 100vh;
+		width: 300px;
+		background-color: #1b1d1e;
+		z-index: 100;
+		transform-origin: top;
+		border: unset;
+		color: var(--greyText);
+		padding: 2rem;
+	}
+	.project-list-container li {
+		text-align: left;
+	}
+	.project-header {
+		max-width: 800px;
+	}
+	.todo-list-item {
+		width: 800px;
+	}
+	.project-toggle-label {
+		margin: 0;
+		width: 36px;
+	}
+	.project-list {
+		position: static;
+		width: 36px;
+	}
 }
 
