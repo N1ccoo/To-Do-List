@@ -98,6 +98,8 @@ nav {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px rgb(165, 163, 163) solid;
+    display: flex;
+    flex-direction: column;
 }
 
 nav ul {
@@ -129,6 +131,55 @@ nav a {
 .nav-toggle:checked ~ nav a {
     opacity: 1;
     transition: opacity 0.25s ease-in-out 0.25s;
+}
+
+.nav-toggle:checked ~ nav label {
+    opacity: 1;
+    transition: opacity 0.25s ease-in-out 0.25s;
+}
+
+#project-list-toggle:checked ~ .project-list-container {
+    transform: scale(1,1);
+    
+}
+
+#project-list-toggle:checked ~ .project-list-container li {
+    opacity: 1;
+    transition: opacity 0.25s ease-in-out 0.25s;
+}
+
+.project-list {
+    position: relative;
+    width: 100vw;
+}
+
+.project-list-container {
+    padding: 0.5rem;
+    width: 100%;
+    left: 0;
+    top:120%;
+    position: absolute;
+    border-top: 1px rgb(165, 163, 163) solid;
+    border-bottom: 1px rgb(165, 163, 163) solid;
+    z-index: 999;
+    background-color: white;
+    transform: scale(1,0);
+    transform-origin: top;
+    transition: transform 0.4s ease-in-out;
+}
+
+.project-list-container li {
+    opacity: 0;
+}
+
+.project-toggle-label {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
 }
 
 /* content */
@@ -223,11 +274,17 @@ nav a {
         display: flex;
         justify-content: flex-end;
         align-items: center;
+    
+    }
+
+    nav::after {
+        all: unset;
+        display: none;
     }
 
     nav ul {
         display: flex;
-        gap: 0.5rem;
+       
     }
 
     nav a {
@@ -237,6 +294,10 @@ nav a {
     nav li {
         margin: 0;
         padding: 0;
+    }
+
+    .project-toggle-label {
+        opacity: 1;
     }
 
     .tooltip {
@@ -265,13 +326,22 @@ nav a {
         flex-direction: column;
     }
 
-    
     .project-header {
         max-width: 800px;
     }
 
     .todo-list-item {
         width: 800px;
+    }
+
+    .project-toggle-label {
+        margin: 0;
+        width: 36px;
+    }
+
+    .project-list {
+    
+        width: 36px;
     }
 }
 

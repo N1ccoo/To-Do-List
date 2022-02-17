@@ -8,8 +8,8 @@ import listImage from './assets/list.png';
 
 const loadHomePage = () => {
     createNavBar();
-    createContent();
-    
+    createTodoNav();
+   
 };
 
 function createNavBar() {
@@ -18,68 +18,53 @@ function createNavBar() {
     let logo = create({type:'div', css:['logo'], text:"Nicco"});
     let navToggle = create({type:'input', attr:{type:'checkbox', id:'nav-toggle'}, css:['nav-toggle']});
     let navToggleLabel = create({type:'label',attr:{for:'nav-toggle'}, css:['nav-toggle-label']});
-    let list = create({type:'ul'});
+    let list1 = create({type:'ul'});
+    let projectListContainer = create({type:'ul',css:['project-list-container']});
 
     let li1 = create({type:'li'});
     let li2 = create({type:'li'});
-    let li3 = create({type:'li'});
+    let projectList = create({type:'div',css:['project-list']});
 
     let link1 = create({type:'a', attr:{href:'#'}});
     let link2 = create({type:'a', attr:{href:'#'}});
-    let link3 = create({type:'a', attr:{href:'#'}});
-    
+
+    let projectListToggle = create({type:'input', attr:{type:'checkbox', id:'project-list-toggle'}, css:['nav-toggle']});
+    let projectListToggleLabel = create({type:'label',attr:{for:'project-list-toggle'}, css:['project-toggle-label']});
+
     let homeSymbol = createImage (homeImage,'nav-symbol');
     let menuSymbol = createImage (menuImage,'nav-symbol');
     let addSymbol = createImage (addImage,'nav-symbol');
     let listSymbol = createImage(listImage,'nav-symbol');
-    
 
     let homeToolTip = create({type:'div', css:['tooltip'], text:'Home'});
     let addToolTip = create({type:'div', css:['tooltip'], text:'Create To Do'});
     let listToolTip = create({type:'div', css:['tooltip'], text:'View To Do'});
 
+    let projectLi1 = create({type:'li',text:'Project lol'});
+    let projectLi2 = create({type:'li',text:'Inbox'});
+
     document.body.append(header);
         header.append(logo,navToggle,navToggleLabel,nav);
             navToggleLabel.append(menuSymbol);
-            nav.append(list);
-                list.append(li1,li2,li3);
+            nav.append(list1,projectList);
+                list1.append(li1,li2);
                     li1.append(link1);
                     li2.append(link2);
-                    li3.append(link3);
+                    projectList.append(projectListToggle,projectListToggleLabel,projectListContainer);
                         link1.append(homeSymbol,homeToolTip);
                         link2.append(addSymbol,addToolTip);
-                        link3.append(listSymbol,listToolTip);
+                        projectListToggleLabel.append(listSymbol,listToolTip);
+                            projectListContainer.append(projectLi1,projectLi2);
+
 }                      
-
-function createContent(project, todo) {
-    let container = create({type:'div',css:['project-container']});
-
-    let projectName = create({type:'h1',text:'project'});
-
-    let headerContainer = create({type:'div',css:['project-header']});
-
-    let todoList = create({type:'ul', css:['todo-list']} );
-    let todo1 = create({type:'li', css:['todo-list-item']});
-    
-    let button = create({type:'button', css:['todo-button'], text:'✔️'})
-    let todoTitle = create({type:'p',css:['todo-title'], text:'Finish the webpage.'});
-    let todoText = create({type:'p', css:['todo-text'], text: 'I must finish this webpage, I have alot of stuff to do...'});
-    let todoTextContainer = create({type:'div', css:['todo-text-container']});
-
-    document.body.append(container);
-        container.append(headerContainer,todoList);
-            todoList.append(todo1);
-            headerContainer.append(projectName);
-
-                todo1.append(button,todoTextContainer)
-                    todoTextContainer.append(todoTitle,todoText);
-}
 
 
 
 
 function createTodoNav() {
-    console.log('to do navbar created');
+    
+        
+    
 }
 
 
