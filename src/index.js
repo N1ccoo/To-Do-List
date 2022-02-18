@@ -5,8 +5,8 @@ import { Todo as createTodo , Project as createProject } from './todo.js';
 // (title,description,dueDate,priority)
 
 import createContent from './page-load-content.js';
+import navLogic from './navbarLogic.js'
 
-loadHomePage()
 
 
 let test = createTodo('Finish Website','Finish this to do list website','no due date',1);
@@ -20,6 +20,8 @@ inbox.addTodo(test2)
 let projects = [inbox,noTodo]
 
 
+// page gen
 
+loadHomePage();
 createContent(projects[0])
-
+navLogic();

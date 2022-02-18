@@ -8,7 +8,7 @@ import listImage from './assets/list.png';
 
 const loadHomePage = () => {
     createNavBar();
-    createTodoNav();
+    createTodoNav()
    
 };
 
@@ -16,10 +16,10 @@ function createNavBar() {
     let header = create({type:'header'});
     let nav = create({type:'nav'});
     let logo = create({type:'div', css:['logo'], text:"Nicco"});
-    let navToggle = create({type:'input', attr:{type:'checkbox', id:'nav-toggle'}, css:['nav-toggle']});
+    let navToggle = create({type:'input', attr:{type:'checkbox', id:'nav-toggle',value:'yes'}, css:['nav-toggle']});
     let navToggleLabel = create({type:'label',attr:{for:'nav-toggle'}, css:['nav-toggle-label']});
     let list1 = create({type:'ul'});
-    let projectListContainer = create({type:'ul',css:['project-list-container']});
+    let projectListContainer = create({type:'ul',css:['project-list-container'], attr:{id:'project-list-container'}});
 
     let li1 = create({type:'li'});
     let li2 = create({type:'li'});
@@ -28,7 +28,7 @@ function createNavBar() {
     let link1 = create({type:'a', attr:{href:'#'}});
     let link2 = create({type:'a', attr:{href:'#'}});
 
-    let projectListToggle = create({type:'input', attr:{type:'checkbox', id:'project-list-toggle'}, css:['nav-toggle']});
+    let projectListToggle = create({type:'input', attr:{type:'checkbox', id:'project-list-toggle', value:'yes'}, css:['nav-toggle']});
     let projectListToggleLabel = create({type:'label',attr:{for:'project-list-toggle'}, css:['project-toggle-label']});
 
     let homeSymbol = createImage (homeImage,'nav-symbol');
@@ -40,8 +40,7 @@ function createNavBar() {
     let addToolTip = create({type:'div', css:['tooltip'], text:'Create To Do'});
     let listToolTip = create({type:'div', css:['tooltip'], text:'View To Do'});
 
-    let projectLi1 = create({type:'li',text:'Project lol'});
-    let projectLi2 = create({type:'li',text:'Inbox'});
+   
 
     document.body.append(header);
         header.append(logo,navToggle,navToggleLabel,nav);
@@ -54,7 +53,7 @@ function createNavBar() {
                         link1.append(homeSymbol,homeToolTip);
                         link2.append(addSymbol,addToolTip);
                         projectListToggleLabel.append(listSymbol,listToolTip);
-                            projectListContainer.append(projectLi1,projectLi2);
+                            
 
 }                      
 
@@ -62,8 +61,11 @@ function createNavBar() {
 
 
 function createTodoNav() {
+    let projectListContainer = document.getElementById('project-list-container');
+    let projectLi1 = create({type:'li',text:'Project lol'});
+    let projectLi2 = create({type:'li',text:'Inbox'});
     
-        
+    projectListContainer.append(projectLi1,projectLi2);
     
 }
 

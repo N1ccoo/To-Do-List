@@ -3,12 +3,12 @@
 :root {
 	--blue: rgb(66, 174, 247);
 	--lightGreyText: #d4d0ca;
-	--greyText: rgb(146, 145, 145);
+	--greyText: rgb(161, 159, 159);
 	--borderGrey: #2e3335;
 	--darkContent: #181a1b;
 	--darkNav: #1b1d1e;
 	--tooltip: #333638;
-	--tooltip-light: #878a8d;
+	--tooltip-light: #959799;
 }
 
 * {
@@ -28,14 +28,14 @@ body {
 }
 
 .nav-symbol {
-	height: 36px;
-	width: 36px;
+	height: 30px;
+	width: 30px;
 	border-radius: 3px;
-	padding: 6px;
+	padding: 2px;
 }
 
 .nav-symbol:hover {
-	background-color: rgba(0, 0, 0, 0.11);
+	background-color: rgba(0, 0, 0, 0.233);
 }
 
 .nav-symbol:hover~.tooltip {
@@ -45,8 +45,8 @@ body {
 
 .tooltip {
 	position: absolute;
-	top: 2px;
-	left: 35px;
+	top: -1px;
+	left: 30px;
 	opacity: 0;
 	padding: 0.5rem;
 	font-size: 0.9rem;
@@ -74,7 +74,7 @@ header {
 	/* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, #d6e8fac2, #4294ff81);
 	/* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #0084ff, #b6d5fd);
+	background: linear-gradient(to right, #0b5194, #0047a5);
 	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	text-align: center;
 	position: fixed;
@@ -124,6 +124,7 @@ nav li {
 	display: flex;
 	flex-direction: column;
 	margin-left: 1rem;
+    
 }
 
 nav a {
@@ -134,8 +135,8 @@ nav a {
 	opacity: 0;
 	transition: opacity 0.15s ease-in-out;
 	position: relative;
-	height: 36px;
-	width: 36px;
+	height: inherit;
+	
 }
 
 .nav-toggle:checked~nav {
@@ -150,6 +151,10 @@ nav a {
 .nav-toggle:checked~nav label {
 	opacity: 1;
 	transition: opacity 0.15s ease-in-out 0.25s;
+}
+
+.nav-toggle:checked ~ label .nav-symbol{
+    background-color: rgba(0, 0, 0, 0.233);
 }
 
 /* side nav bar */
@@ -286,6 +291,7 @@ nav a {
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
+        gap: 0.2rem;
 	}
 	nav::after {
 		all: unset;
@@ -293,6 +299,8 @@ nav a {
 	}
 	nav ul {
 		display: flex;
+        height: 30px;
+        gap: 0.2rem;
 	}
 	nav a {
 		opacity: 1;
@@ -330,6 +338,7 @@ nav a {
 		flex-direction: column;
 	}
 	.project-list-container {
+        
 		position: absolute;
 		display: flex;
 		flex-direction: column;
