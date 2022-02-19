@@ -8,6 +8,7 @@ const navLogic = () => {
     let menu = document.getElementById('nav-toggle');
     let viewTodo = document.getElementById('project-list-toggle');
 
+
     function logic() {
         if (menu.checked === true) {
             menu.checked = false;

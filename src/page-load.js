@@ -8,8 +8,6 @@ import listImage from './assets/list.png';
 
 const loadHomePage = () => {
     createNavBar();
-    createTodoNav()
-   
 };
 
 function createNavBar() {
@@ -60,14 +58,7 @@ function createNavBar() {
 
 
 
-function createTodoNav() {
-    let projectListContainer = document.getElementById('project-list-container');
-    let projectLi1 = create({type:'li',text:'Project lol'});
-    let projectLi2 = create({type:'li',text:'Inbox'});
-    
-    projectListContainer.append(projectLi1,projectLi2);
-    
-}
+
 
 
 export { loadHomePage };

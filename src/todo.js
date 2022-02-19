@@ -26,18 +26,28 @@ const projectMethods = (state) => ({
     addTodo: (value) => {
        return state.todo.push(value)
     },
+    setColor: (value) => {
+        return state.color = value
+    },
     getTitle: () => {
         return state.title
     },
     getTodo: () => {
         return state.todo
+    },
+    getColor: () => {
+        return state.color
     }
-
 });
 
-const Project = (title) => {
+const Project = (title,color) => {
+    if (color === undefined) {
+        color = 'black';
+    }
+
     let state = {
         title,
+        color,
         todo:[]
     };
 

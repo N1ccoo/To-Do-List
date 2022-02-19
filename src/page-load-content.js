@@ -1,4 +1,4 @@
-import { Todo as createTodo , Project as createProject } from './todo.js';
+import { Todo, Project } from './todo.js';
 import create from './dom.js';
 
 function createContent (project) {
@@ -14,8 +14,7 @@ function createContent (project) {
         projectContainer.append(projectHeader,todoList);
             projectHeader.append(h1);
 
-
-
+            
     todoArray.forEach(element => {
         let li = create({type:'li', css:['todo-list-item']});
         let button = create({type:'button', css:['todo-button'], text:'✔️'})
