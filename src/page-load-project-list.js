@@ -6,7 +6,6 @@ import moreImage from './assets/more.png';
 function createProjectListContent(projects) {
     let projectListContainer = document.getElementById('project-list-container');
     let projectListContainerGrid = document.getElementById('project-list-container-grid');
-    console.log(projectListContainerGrid)
     
     projects.forEach(item => {
         let li = create({type:'li'});
