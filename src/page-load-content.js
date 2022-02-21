@@ -5,16 +5,20 @@ function createContent (project) {
 
     let todoArray = project.getTodo()
 
-    let projectContainer = create({ type:'div', css:['project-container']});
+    let bodyGrid = create({type:'div', attr:{id:'grid-body'}});
+    let projectContainer = create({ type:'div', css:['project-container'], attr:{id:'project-container'}});
     let projectHeader = create({ type:'div', css:['project-header']});
     let h1 = create({ type:'h1', text:project.getTitle()});
     let todoList = create({ type:'ul', css:['todo-list']});
+    
+    let todoListGrid = create({type:'ul', css:['project-list-container-grid'], attr:{id:'project-list-container-grid'}});
 
-    document.body.append(projectContainer)   
-        projectContainer.append(projectHeader,todoList);
-            projectHeader.append(h1);
 
-            
+    document.body.append(bodyGrid);
+        bodyGrid.append(todoListGrid,projectContainer);   
+            projectContainer.append(projectHeader,todoList);
+                projectHeader.append(h1);
+
     todoArray.forEach(element => {
         let li = create({type:'li', css:['todo-list-item']});
         let button = create({type:'button', css:['todo-button'], text:'✔️'})

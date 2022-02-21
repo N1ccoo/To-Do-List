@@ -13,7 +13,7 @@ const loadHomePage = () => {
 function createNavBar() {
     let header = create({type:'header'});
     let nav = create({type:'nav'});
-    let logo = create({type:'div', css:['logo'], text:"Nicco"});
+    let logo = create({type:'div', css:['logo'], text:"Nicco List"});
     let navToggle = create({type:'input', attr:{type:'checkbox', id:'nav-toggle',value:'yes'}, css:['nav-toggle']});
     let navToggleLabel = create({type:'label',attr:{for:'nav-toggle'}, css:['nav-toggle-label']});
     let list1 = create({type:'ul'});
@@ -38,12 +38,10 @@ function createNavBar() {
     let addToolTip = create({type:'div', css:['tooltip'], text:'Create To Do'});
     let listToolTip = create({type:'div', css:['tooltip'], text:'View To Do'});
 
-   
-
     document.body.append(header);
-        header.append(logo,navToggle,navToggleLabel,nav);
+        header.append(navToggle,navToggleLabel,nav,logo);
             navToggleLabel.append(menuSymbol);
-            nav.append(list1,projectList);
+            nav.append(projectList,list1);
                 list1.append(li1,li2);
                     li1.append(link1);
                     li2.append(link2);
@@ -51,8 +49,6 @@ function createNavBar() {
                         link1.append(homeSymbol,homeToolTip);
                         link2.append(addSymbol,addToolTip);
                         projectListToggleLabel.append(listSymbol,listToolTip);
-                            
-
 }                      
 
 

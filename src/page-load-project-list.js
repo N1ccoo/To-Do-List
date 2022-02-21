@@ -5,19 +5,56 @@ import moreImage from './assets/more.png';
 
 function createProjectListContent(projects) {
     let projectListContainer = document.getElementById('project-list-container');
-    console.log(projects)
+    let projectListContainerGrid = document.getElementById('project-list-container-grid');
+    console.log(projectListContainerGrid)
     
     projects.forEach(item => {
         let li = create({type:'li'});
         let circleSymbol = create({type:'div',css:['circle']});
         let text = create({type:'p', text:item.getTitle() });
         let moreSymbol = createImage(moreImage,'nav-symbol');
+        let todoNum = create({type:'p', text:item.getTodo().length, css:['todo-num']});
 
+        let li2 = create({type:'li'});
+        let circleSymbol2 = create({type:'div',css:['circle']});
+        let text2 = create({type:'p', text:item.getTitle() });
+        let moreSymbol2 = createImage(moreImage,'nav-symbol');
+        let todoNum2 = create({type:'p', text:item.getTodo().length, css:['todo-num']});
+        
         projectListContainer.append(li);
-            li.append(circleSymbol,text,moreSymbol);
+            li.append(circleSymbol,text,moreSymbol,todoNum);
+
+        projectListContainerGrid.append(li2);
+            li2.append(circleSymbol2,text2,moreSymbol2,todoNum2);
+        
+        li.addEventListener('mouseenter',displayMore);
+        li.addEventListener('mouseleave',displayNum);
+
+        li2.addEventListener('mouseenter',displayMore2);
+        li2.addEventListener('mouseleave',displayNum2);
+
+        function displayMore(e) {
+            moreSymbol.style.display = 'block';
+            todoNum.style.display = 'none';
+        }
+        
+        function displayNum(e) {
+            moreSymbol.style.display = 'none';
+            todoNum.style.display = 'block';
+        }
+
+        function displayMore2(e) {
+            moreSymbol2.style.display = 'block';
+            todoNum2.style.display = 'none';
+        }
+        
+        function displayNum2(e) {
+            moreSymbol2.style.display = 'none';
+            todoNum2.style.display = 'block';
+        }
+
+
     });
-    
-    
 }
 
 export default createProjectListContent;
