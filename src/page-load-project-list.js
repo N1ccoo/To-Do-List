@@ -2,6 +2,7 @@ import { Todo, Project } from './todo.js';
 import create from './dom.js';
 import { createImage } from './dom.js';
 import moreImage from './assets/more.png';
+import createContent from './page-load-content.js';
 
 function createProjectListContent(projects) {
     let projectListContainer = document.getElementById('project-list-container');
@@ -29,8 +30,9 @@ function createProjectListContent(projects) {
         li.addEventListener('mouseenter',displayMore);
         li.addEventListener('mouseleave',displayNum);
 
-        li2.addEventListener('mouseenter',displayMore2);
-        li2.addEventListener('mouseleave',displayNum2);
+        li2.addEventListener('mouseenter',displayMoreGrid);
+        li2.addEventListener('mouseleave',displayNumGrid);
+        li2.addEventListener('click',test)
 
         function displayMore(e) {
             moreSymbol.style.display = 'block';
@@ -42,16 +44,19 @@ function createProjectListContent(projects) {
             todoNum.style.display = 'block';
         }
 
-        function displayMore2(e) {
+        function displayMoreGrid(e) {
             moreSymbol2.style.display = 'block';
             todoNum2.style.display = 'none';
         }
         
-        function displayNum2(e) {
+        function displayNumGrid(e) {
             moreSymbol2.style.display = 'none';
             todoNum2.style.display = 'block';
         }
 
+        function test(e) {
+            createContent(item)
+        }
 
     });
 }

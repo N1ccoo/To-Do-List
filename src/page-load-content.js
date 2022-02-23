@@ -1,36 +1,36 @@
 import { Todo, Project } from './todo.js';
 import create from './dom.js';
+import { createImage } from './dom.js';
+import moreVertImage from './assets/moreVertical.png';
 
 function createContent (project) {
 
+    let projectContainer = document.getElementById('project-container');
     let todoArray = project.getTodo()
 
-    let bodyGrid = create({type:'div', attr:{id:'grid-body'}});
-    let projectContainer = create({ type:'div', css:['project-container'], attr:{id:'project-container'}});
     let projectHeader = create({ type:'div', css:['project-header']});
-    let h1 = create({ type:'h1', text:project.getTitle()});
+    let h1 = create({ type:'h1', text:project.getTitle(), attr:{contenteditable:'true'}});
     let todoList = create({ type:'ul', css:['todo-list']});
+    let symbolContainers = create({type:'div', css:['relative-container']})
     
-    let todoListGrid = create({type:'ul', css:['project-list-container-grid'], attr:{id:'project-list-container-grid'}});
+    let moreVertSymbol = createImage(moreVertImage,'content-symbol');
+    let moreVertToolTip = create({type:'div', css:['tooltip-content'], text:'View Project actions'});
+    let todoListGrid = create({type:'ul', css:['project-list-container-grid'], attr:{id:'project-list-container-grid'}}); 
+        projectContainer.append(projectHeader,todoList);
+            projectHeader.append(h1,symbolContainers);
+                symbolContainers.append(moreVertSymbol,moreVertToolTip);
 
+todoArray.forEach(element => {
+    let li = create({type:'li', css:['todo-list-item']});
+    let button = create({type:'button', css:['todo-button'], text:'✔️'})
+    let todoTextContainer = create({type:'div', css:['todo-text-container']});
+    let todoTitle = create({type:'p',css:['todo-title'], text:element.getTitle()});
+    let todoText = create({type:'p', css:['todo-text'], text:element.getDescription()});
 
-    document.body.append(bodyGrid);
-        bodyGrid.append(todoListGrid,projectContainer);   
-            projectContainer.append(projectHeader,todoList);
-                projectHeader.append(h1);
-
-    todoArray.forEach(element => {
-        let li = create({type:'li', css:['todo-list-item']});
-        let button = create({type:'button', css:['todo-button'], text:'✔️'})
-        let todoTextContainer = create({type:'div', css:['todo-text-container']});
-        let todoTitle = create({type:'p',css:['todo-title'], text:element.getTitle()});
-        let todoText = create({type:'p', css:['todo-text'], text:element.getDescription()});
-
-        todoList.append(li);
-            li.append(button,todoTextContainer);
-                todoTextContainer.append(todoTitle,todoText);
-    });
-
+    todoList.append(li);
+        li.append(button,todoTextContainer);
+            todoTextContainer.append(todoTitle,todoText);
+});
 }
 
 export default createContent;
