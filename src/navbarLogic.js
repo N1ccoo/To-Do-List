@@ -43,8 +43,6 @@ const navLogic = () => {
         
     }
 
-    
-
     function addOverlay() {
         if (viewTodo.checked) {
             darkOverlay.classList.add('dark');
@@ -94,9 +92,22 @@ const navLogic = () => {
 
     }
 
-           
+
         };
     };
+
+    let formTextArea1 = document.getElementById('todo-create-description');
+    let formTextArea2 = document.getElementById('todo-create-title')
+    
+    
+    formTextArea1.addEventListener('input',dynamicHeight)
+    formTextArea2.addEventListener('input',dynamicHeight)
+   
+
+    function dynamicHeight(e){
+        e.target.style.minHeight = '';
+        e.target.style.minHeight = e.target.scrollHeight + 'px';
+    }
 };
 
 

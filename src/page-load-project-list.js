@@ -15,24 +15,28 @@ function createProjectListContent(projects) {
         let moreSymbol = createImage(moreImage,'nav-symbol');
         let todoNum = create({type:'p', text:item.getTodo().length, css:['todo-num']});
 
-        let li2 = create({type:'li'});
-        let circleSymbol2 = create({type:'div',css:['circle']});
-        let text2 = create({type:'p', text:item.getTitle() });
-        let moreSymbol2 = createImage(moreImage,'nav-symbol');
-        let todoNum2 = create({type:'p', text:item.getTodo().length, css:['todo-num']});
+        let listItemGrid = create({type:'li'});
+        let circleSymbolGrid = create({type:'div',css:['circle']});
+        let textGrid = create({type:'p', text:item.getTitle() });
+        let moreSymbolGrid = createImage(moreImage,'nav-symbol');
+        let todoNumGrid = create({type:'p', text:item.getTodo().length, css:['todo-num']});
         
         projectListContainer.append(li);
             li.append(circleSymbol,text,moreSymbol,todoNum);
 
-        projectListContainerGrid.append(li2);
-            li2.append(circleSymbol2,text2,moreSymbol2,todoNum2);
+        projectListContainerGrid.append(listItemGrid);
+            listItemGrid.append(circleSymbolGrid,textGrid,moreSymbolGrid,todoNumGrid);
+
+        circleSymbol.style.backgroundColor = item.getColor();
+        circleSymbolGrid.style.backgroundColor = item.getColor();
         
         li.addEventListener('mouseenter',displayMore);
         li.addEventListener('mouseleave',displayNum);
+        li.addEventListener('click',test);
 
-        li2.addEventListener('mouseenter',displayMoreGrid);
-        li2.addEventListener('mouseleave',displayNumGrid);
-        li2.addEventListener('click',test)
+        listItemGrid.addEventListener('mouseenter',displayMoreGrid);
+        listItemGrid.addEventListener('mouseleave',displayNumGrid);
+        listItemGrid.addEventListener('click',test);
 
         function displayMore(e) {
             moreSymbol.style.display = 'block';
@@ -45,13 +49,13 @@ function createProjectListContent(projects) {
         }
 
         function displayMoreGrid(e) {
-            moreSymbol2.style.display = 'block';
-            todoNum2.style.display = 'none';
+            moreSymbolGrid.style.display = 'block';
+            todoNumGrid.style.display = 'none';
         }
         
         function displayNumGrid(e) {
-            moreSymbol2.style.display = 'none';
-            todoNum2.style.display = 'block';
+            moreSymbolGrid.style.display = 'none';
+            todoNumGrid.style.display = 'block';
         }
 
         function test(e) {

@@ -3,9 +3,13 @@ import create from './dom.js';
 import { createImage } from './dom.js';
 import moreVertImage from './assets/moreVertical.png';
 
+
+
+
 function createContent (project) {
 
     let projectContainer = document.getElementById('project-container');
+    projectContainer.innerHTML = '';
     let todoArray = project.getTodo()
 
     let projectHeader = create({ type:'div', css:['project-header']});
@@ -15,14 +19,15 @@ function createContent (project) {
     
     let moreVertSymbol = createImage(moreVertImage,'content-symbol');
     let moreVertToolTip = create({type:'div', css:['tooltip-content'], text:'View Project actions'});
-    let todoListGrid = create({type:'ul', css:['project-list-container-grid'], attr:{id:'project-list-container-grid'}}); 
+    
+ 
         projectContainer.append(projectHeader,todoList);
             projectHeader.append(h1,symbolContainers);
                 symbolContainers.append(moreVertSymbol,moreVertToolTip);
 
 todoArray.forEach(element => {
     let li = create({type:'li', css:['todo-list-item']});
-    let button = create({type:'button', css:['todo-button'], text:'✔️'})
+    let button = create({type:'button', css:['todo-button'], text:'✓'})
     let todoTextContainer = create({type:'div', css:['todo-text-container']});
     let todoTitle = create({type:'p',css:['todo-title'], text:element.getTitle()});
     let todoText = create({type:'p', css:['todo-text'], text:element.getDescription()});

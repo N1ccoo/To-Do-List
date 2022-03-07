@@ -9,6 +9,7 @@ import iconsEightImage from './assets/icons8.png';
 const loadHomePage = () => {
     createNavBar();
     createMain();
+    createPopup()
 };
 
 function createNavBar() {
@@ -67,7 +68,21 @@ function createMain() {
     document.body.append(gridBody);
         gridBody.append(todoListGrid,projectContainer);
         
-    
+}
+
+function createPopup() {
+    let popup = create({type:'div', attr:{id:'popup-container'}});
+    let textContainer = create({type:'div', attr:{id:'text-container-form'}})
+    let title = create({type:'textarea', attr:{id:'todo-create-title', placeholder:'Task title' }});
+    let description = create({type:'textarea', attr:{id:'todo-create-description', placeholder:'description'}});
+    let buttonContainer = create({type:'div', css:['button-container-form']});
+    let createButton = create({type:'button', attr:{id:'create-button'}, css:['button-form'], text:'Create task'});
+    let cancelButton = create({type:'button', attr:{id:'cancel-button'}, css:['button-form'], text:'Cancel'});
+
+    document.body.append(popup);
+        popup.append(textContainer,buttonContainer);
+            textContainer.append(title,description)
+            buttonContainer.append(createButton, cancelButton);
 }
 
 
