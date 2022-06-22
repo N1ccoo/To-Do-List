@@ -2,7 +2,7 @@ import { Todo, Project } from './todo.js';
 import create from './dom.js';
 import { createImage } from './dom.js';
 import moreVertImage from './assets/moreVertical.png';
-
+import calendarImage from './assets/calendar.png';
 
 
 
@@ -20,7 +20,6 @@ function createContent (project) {
     let moreVertSymbol = createImage(moreVertImage,'content-symbol');
     let moreVertToolTip = create({type:'div', css:['tooltip-content'], text:'View Project actions'});
     
- 
         projectContainer.append(projectHeader,todoList);
             projectHeader.append(h1,symbolContainers);
                 symbolContainers.append(moreVertSymbol,moreVertToolTip);
@@ -32,9 +31,14 @@ todoArray.forEach(element => {
     let todoTitle = create({type:'p',css:['todo-title'], text:element.getTitle()});
     let todoText = create({type:'p', css:['todo-text'], text:element.getDescription()});
 
+    let todoDateContainer = create({type:'div', css:['todo-date-container']});
+    let calendarImageSymbol = createImage(calendarImage,'content-symbol-oneRem');
+    let todoDate = create({type:'p', css:['todo-date'], text:element.getDueDate()});
+
     todoList.append(li);
         li.append(button,todoTextContainer);
-            todoTextContainer.append(todoTitle,todoText);
+            todoTextContainer.append(todoTitle,todoText,todoDateContainer);
+                todoDateContainer.append(calendarImageSymbol,todoDate)
 });
 }
 

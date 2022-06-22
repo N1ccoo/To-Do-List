@@ -17,10 +17,11 @@ const createHtmlElement = (param) => {
     return elem
 }
 
-const createImage = (src,css) => {
+const createImage = (src,css,id) => {
     let image = new Image();
     image.src = src;
     image.classList.add(css);
+    image.setAttribute('id',id)
 
     return image
 }

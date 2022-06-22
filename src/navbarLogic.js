@@ -96,18 +96,45 @@ const navLogic = () => {
         };
     };
 
+    // dynamic height
+
     let formTextArea1 = document.getElementById('todo-create-description');
     let formTextArea2 = document.getElementById('todo-create-title')
-    
     
     formTextArea1.addEventListener('input',dynamicHeight)
     formTextArea2.addEventListener('input',dynamicHeight)
    
-
     function dynamicHeight(e){
         e.target.style.minHeight = '';
         e.target.style.minHeight = e.target.scrollHeight + 'px';
     }
+
+    // create todo (open and close form)
+
+    let createTodo = document.getElementById('create-button');
+    let cancelTodo = document.getElementById('cancel-button');
+    let createTodoButton = document.getElementById('create-todo-button');
+    let popupContainer = document.getElementById('popup-container');
+   
+    function openForm(e) {
+        popupContainer.classList.remove('close');
+        popupContainer.classList.add('open');
+        document.addEventListener('click', closeForm);
+    }
+
+    function closeForm(e) {
+        let path = e.composedPath();
+        const withinBoundaries = path.includes(createTodoButton) || path.includes(popupContainer);
+        if (!(withinBoundaries)) {
+            popupContainer.classList.add('close');
+            popupContainer.classList.remove('open');
+        };
+    };
+
+    createTodoButton.addEventListener('click', openForm);
+
+    createTodo.addEventListener('click', closeForm);
+
 };
 
 

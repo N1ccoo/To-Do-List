@@ -6,6 +6,7 @@ import { Todo as createTodo , Project as createProject } from './todo.js';
 
 import createContent from './page-load-content.js';
 import createProjectLiContent from './page-load-project-list';
+import createPopup from './popup';
 import navLogic from './navbarLogic.js';
 
 
@@ -30,5 +31,6 @@ let projects = [inbox,noTodo,testOne,testTwo,testThree,testFour]
 loadHomePage();
 createContent(projects[0])
 createProjectLiContent(projects)
+createPopup(projects)
 navLogic();
 
