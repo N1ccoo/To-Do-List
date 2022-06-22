@@ -295,15 +295,15 @@ nav a {
 	gap: 1rem;
 }
 
-#popup-container.open {
+#popup-container.openPopupForm {
     animation: open 0.5s forwards;
 }
 
-#popup-container.close {
+#popup-container.closePopupForm {
     animation: close 0.5s forwards;
 }
 
-@keyframes close {
+@keyframes closePopupForm {
 	0% {
         transform: translate(-50%,-50%) scale(1);
         z-index: 100;
@@ -314,7 +314,7 @@ nav a {
     }
 }
 
-@keyframes open {
+@keyframes openPopupForm {
     0% {
         transform: translate(-50%,-50%) scale(0);
         z-index: 100;

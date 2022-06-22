@@ -87,12 +87,27 @@ const navLogic = () => {
         if (menu.checked === false && viewTodo.checked === true) {
             viewTodo.checked = false;
             darkOverlay.classList.remove('dark');
-            
-    function projectListHide() {
+    
+        };
+    };
 
+    // close project list container on under 800px media
+
+    let projectListButton = document.getElementById('project-list-toggle');
+    let projectListContainer = document.getElementById('project-list-container');
+
+    projectListButton.addEventListener('click', openProjectList);
+    
+
+    function openProjectList(e) {
+        document.addEventListener('click', closeProjectList);
     }
 
-
+    function closeProjectList(e) {
+        let path = e.composedPath();
+        const withinBoundaries = path.includes(projectListContainer);
+        if (!(withinBoundaries)) {
+            console.log('wow')
         };
     };
 
@@ -117,8 +132,8 @@ const navLogic = () => {
     let popupContainer = document.getElementById('popup-container');
    
     function openForm(e) {
-        popupContainer.classList.remove('close');
-        popupContainer.classList.add('open');
+        popupContainer.classList.remove('closePopupForm');
+        popupContainer.classList.add('openPopupForm');
         document.addEventListener('click', closeForm);
     }
 
@@ -126,13 +141,12 @@ const navLogic = () => {
         let path = e.composedPath();
         const withinBoundaries = path.includes(createTodoButton) || path.includes(popupContainer);
         if (!(withinBoundaries)) {
-            popupContainer.classList.add('close');
-            popupContainer.classList.remove('open');
+            popupContainer.classList.add('closePopupForm');
+            popupContainer.classList.remove('openPopupForm');
         };
     };
 
     createTodoButton.addEventListener('click', openForm);
-
     createTodo.addEventListener('click', closeForm);
 
 };
