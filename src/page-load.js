@@ -31,7 +31,7 @@ function createNavBar() {
 
 
     let projectListToggle = create({type:'input', attr:{type:'checkbox', id:'project-list-toggle', value:'yes'}, css:['nav-toggle']});
-    let projectListToggleLabel = create({type:'label',attr:{for:'project-list-toggle'}, css:['project-toggle-label']});
+    let projectListToggleLabel = create({type:'label',attr:{for:'project-list-toggle', id:'project-toggle-label'}, css:['project-toggle-label']});
 
     let homeSymbol = createImage (homeImage,'nav-symbol', 'home-button');
     let menuSymbol = createImage (menuImage,'nav-symbol', 'menu-button');

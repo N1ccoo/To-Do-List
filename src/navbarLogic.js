@@ -16,10 +16,8 @@ const navLogic = () => {
     media.addEventListener('change',logicMedia);
     menu.addEventListener('click',logicMenu)
     viewTodo.addEventListener('change',addOverlay);
+    viewTodo.addEventListener('change',slideNav);
     
-    viewTodo.addEventListener('click',slideNav)
-    
-
     function slideNav() {
         if (viewTodo.checked) {
             projectListGrid.style.width = '250px';
@@ -30,6 +28,7 @@ const navLogic = () => {
                 item.style.visibility = 'visible';
                 item.style.opacity = '1'
             });
+
         } else {
             projectListGrid.style.width = '0px';
             projectListGrid.style.visibility = 'hidden';
@@ -39,6 +38,7 @@ const navLogic = () => {
                 item.style.visibility = 'hidden';
                 item.style.opacity = '0';
             });
+           
         }
         
     }
@@ -50,6 +50,7 @@ const navLogic = () => {
             darkOverlay.classList.remove('dark');
         };
     };
+
   
     function logicMedia() {
             if (menu.checked === true) {
@@ -93,21 +94,38 @@ const navLogic = () => {
 
     // close project list container on under 800px media
 
+    let projectToggleLabel = document.getElementById('project-toggle-label');
     let projectListButton = document.getElementById('project-list-toggle');
     let projectListContainer = document.getElementById('project-list-container');
-
-    projectListButton.addEventListener('click', openProjectList);
+    let widthMatch = window.matchMedia("(min-width: 800px)")
     
+    widthMatch.addEventListener('change', projectListLogic)
+    
+    function projectListLogic (e) {
+        if (e.matches) {
+            viewTodo.removeEventListener('change',openProjectList)
+        } else {
+            viewTodo.addEventListener('change',openProjectList)
+        }
+    }
 
     function openProjectList(e) {
-        document.addEventListener('click', closeProjectList);
+        document.addEventListener('click',closeProjectList)
+        projectToggleLabel.style.pointerEvents = 'none';
     }
 
     function closeProjectList(e) {
         let path = e.composedPath();
         const withinBoundaries = path.includes(projectListContainer);
         if (!(withinBoundaries)) {
-            console.log('wow')
+            viewTodo.checked = false;
+            addOverlay()
+            console.log(viewTodo.checked)
+            console.log(e.target)
+            projectToggleLabel.style.pointerEvents = 'auto';
+            document.removeEventListener('click',closeProjectList)
+        } else if (path.includes(projectListButton)) {
+            console.log(path.includes(projectListButton))
         };
     };
 
@@ -143,6 +161,7 @@ const navLogic = () => {
         if (!(withinBoundaries)) {
             popupContainer.classList.add('closePopupForm');
             popupContainer.classList.remove('openPopupForm');
+            document.removeEventListener('click', closeForm)
         };
     };
 

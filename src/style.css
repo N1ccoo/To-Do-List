@@ -79,6 +79,7 @@ body {
 	opacity: 0;
 	cursor: default;
 	z-index: 200;
+	pointer-events: none;
 }
 
 .tooltip-content {
@@ -96,6 +97,7 @@ body {
 	opacity: 0;
 	cursor: default;
 	z-index: 200;
+	pointer-events: none;
 }
 
 /* navbar */
