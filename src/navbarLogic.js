@@ -99,8 +99,19 @@ const navLogic = () => {
     let projectListContainer = document.getElementById('project-list-container');
     let widthMatch = window.matchMedia("(min-width: 800px)")
     
-    widthMatch.addEventListener('change', projectListLogic)
-    
+    widthMatch.addEventListener('change', projectListLogic);
+    document.addEventListener('DOMContentLoaded',pageLoadProjectListLogic);
+
+    function pageLoadProjectListLogic (e) {
+        console.log(widthMatch)
+
+        if (window.innerWidth >= 800) {
+            viewTodo.removeEventListener('change', openProjectList);
+        } else {
+            viewTodo.addEventListener('change',openProjectList);
+        }
+    }
+
     function projectListLogic (e) {
         if (e.matches) {
             viewTodo.removeEventListener('change',openProjectList)
