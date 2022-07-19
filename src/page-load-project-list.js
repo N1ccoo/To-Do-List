@@ -5,9 +5,14 @@ import moreImage from './assets/more.png';
 import createContent from './page-load-content.js';
 
 function createProjectListContent(projects) {
+
     let projectListContainer = document.getElementById('project-list-container');
     let projectListContainerGrid = document.getElementById('project-list-container-grid');
-    
+    let viewTodo = document.getElementById('project-list-toggle');
+
+    projectListContainer.innerHTML = '';
+    projectListContainerGrid.innerHTML = '';
+
     projects.forEach(item => {
         let li = create({type:'li'});
         let circleSymbol = create({type:'div',css:['circle']});
@@ -30,6 +35,14 @@ function createProjectListContent(projects) {
         circleSymbol.style.backgroundColor = item.getColor();
         circleSymbolGrid.style.backgroundColor = item.getColor();
         
+        if (viewTodo.checked) {
+            listItemGrid.style.visibility = 'visible';
+            listItemGrid.style.opacity = '1'
+        } else {
+            listItemGrid.style.visibility = 'hidden';
+            listItemGrid.style.opacity = '0'
+        }
+
         li.addEventListener('mouseenter',displayMore);
         li.addEventListener('mouseleave',displayNum);
         li.addEventListener('click',test);

@@ -1,13 +1,10 @@
 import create from './dom.js';
 
-
-
 const navLogic = () => {
 
     let menu = document.getElementById('nav-toggle');
     let viewTodo = document.getElementById('project-list-toggle');
     let projectListGrid = document.getElementById('project-list-container-grid');
-    let projectListItems = Array.from(projectListGrid.children)
     const media = matchMedia('(min-width: 800px)');
 
     let darkOverlay = create({type:'div', attr:{id:'dark-overlay'}});
@@ -19,6 +16,9 @@ const navLogic = () => {
     viewTodo.addEventListener('change',slideNav);
     
     function slideNav() {
+
+        let projectListItems = Array.from(projectListGrid.children)
+
         if (viewTodo.checked) {
             projectListGrid.style.width = '250px';
             projectListGrid.style.visibility = 'visible';
@@ -53,6 +53,9 @@ const navLogic = () => {
 
   
     function logicMedia() {
+
+        let projectListItems = Array.from(projectListGrid.children)
+
             if (menu.checked === true) {
                 menu.checked = false;
                 viewTodo.checked = false;
@@ -102,9 +105,7 @@ const navLogic = () => {
     widthMatch.addEventListener('change', projectListLogic);
     document.addEventListener('DOMContentLoaded',pageLoadProjectListLogic);
 
-    function pageLoadProjectListLogic (e) {
-        console.log(widthMatch)
-
+    function pageLoadProjectListLogic () {
         if (window.innerWidth >= 800) {
             viewTodo.removeEventListener('change', openProjectList);
         } else {
@@ -131,13 +132,9 @@ const navLogic = () => {
         if (!(withinBoundaries)) {
             viewTodo.checked = false;
             addOverlay()
-            console.log(viewTodo.checked)
-            console.log(e.target)
             projectToggleLabel.style.pointerEvents = 'auto';
             document.removeEventListener('click',closeProjectList)
-        } else if (path.includes(projectListButton)) {
-            console.log(path.includes(projectListButton))
-        };
+        }; 
     };
 
     // dynamic height
@@ -180,10 +177,6 @@ const navLogic = () => {
     createTodo.addEventListener('click', closeForm);
 
 };
-
-
-
-
 
 
 export default navLogic;
